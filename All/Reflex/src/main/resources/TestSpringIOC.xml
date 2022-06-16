@@ -1,0 +1,6 @@
+<beans>
+    <bean id = "user" class="com.lss.pojo.User" >
+        <property  name = "userName" value="刘松生"/>
+        <property  name = "age" value="18"/>
+    </bean>
+</beans>
