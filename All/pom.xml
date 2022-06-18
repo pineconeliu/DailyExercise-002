@@ -12,6 +12,7 @@
         <module>Queue</module>
         <module>Redis</module>
         <module>Reflex</module>
+        <module>Concurrency</module>
     </modules>
 
     <properties>
