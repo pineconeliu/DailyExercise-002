@@ -3,6 +3,7 @@ package com.lss.lock.model;
 import cn.hutool.core.thread.ThreadFactoryBuilder;
 import com.lss.model.Container;
 
+import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -42,12 +43,12 @@ public class Test {
             }
         });
 
+        threadPoolExecutor.shutdownNow();
         //本意是想让线程池中工作的线程都停止工作，但是shutdownNow 方法会报错，而且程序还没死亡,这是为何？
-     /*   threadPoolExecutor.shutdownNow();
-
-
+      /*   threadPoolExecutor.shutdownNow();
         */
-        threadPoolExecutor.execute(new Producer(container));
+
+
     }
 }
 

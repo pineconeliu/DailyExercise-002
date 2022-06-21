@@ -1,0 +1,33 @@
+1. Future需要获取返回值，才能获取异常信息
+
+ExecutorService executorService = new ThreadPoolExecutor(5, 10, 5L,
+    TimeUnit.SECONDS, new ArrayBlockingQueue<>(10));
+CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> {
+      int a = 0;
+      int b = 666;
+      int c = b / a;
+      return true;
+   },executorService).thenAccept(System.out::println);
+
+ //如果不加 get()方法这一行，看不到异常信息
+ //future.get();
+Future需要获取返回值，才能获取到异常信息。如果不加 get()/join()方法，看不到异常信息。小伙伴们使用的时候，注意一下哈,考虑是否加try...catch...或者使用exceptionally方法。
+
+2. CompletableFuture的get()方法是阻塞的。
+
+CompletableFuture的get()方法是阻塞的，如果使用它来获取异步调用的返回值，需要添加超时时间~
+
+//反例
+ CompletableFuture.get();
+//正例
+CompletableFuture.get(5, TimeUnit.SECONDS);
+
+3. 默认线程池的注意点
+
+CompletableFuture代码中又使用了默认的线程池，处理的线程个数是电脑CPU核数-1。在大量请求过来的时候，处理逻辑复杂的话，响应会很慢。一般建议使用自定义线程池，优化线程池配置参数。
+
+4. 自定义线程池时，注意饱和策略
+
+CompletableFuture的get()方法是阻塞的，我们一般建议使用 future.get(3, TimeUnit.SECONDS)。并且一般建议使用自定义线程池。
+
+但是如果线程池拒绝策略是 DiscardPolicy或者 DiscardOldestPolicy，当线程池饱和时，会直接丢弃任务，不会抛弃异常。因此建议，CompletableFuture线程池策略最好使用AbortPolicy，然后耗时的异步线程，做好线程池隔离哈。
