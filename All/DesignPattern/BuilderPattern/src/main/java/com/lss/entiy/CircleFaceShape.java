@@ -1,6 +1,6 @@
 package com.lss.entiy;
 
-import com.lss.inter.EquipmentBar;
+import com.lss.self.inter.EquipmentBar;
 
 //锥子脸，圆脸，方脸
 public class CircleFaceShape implements EquipmentBar {

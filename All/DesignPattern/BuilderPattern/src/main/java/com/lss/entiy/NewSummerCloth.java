@@ -1,6 +1,6 @@
 package com.lss.entiy;
 
-import com.lss.inter.EquipmentBar;
+import com.lss.self.inter.EquipmentBar;
 
 public class NewSummerCloth implements EquipmentBar {
     @Override

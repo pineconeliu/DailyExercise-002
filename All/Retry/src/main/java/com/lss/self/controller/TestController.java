@@ -1,10 +1,10 @@
-package com.lss.controller;
+package com.lss.self.controller;
 
-import com.lss.annotation.Retry;
-import com.lss.inter.impl.DefaultRetryListener;
-import com.lss.inter.impl.FastRetryStrategy;
-import com.lss.mapper.master.UserMapper;
-import com.lss.pojo.entity.UserEntity;
+import com.lss.self.annotation.Retry;
+import com.lss.self.inter.impl.DefaultRetryListener;
+import com.lss.self.inter.impl.FastRetryStrategy;
+import com.lss.self.master.UserMapper;
+import com.lss.self.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
-package com.lss.inter;
+package com.lss.self.inter;
 
-import com.lss.annotation.Retry;
+import com.lss.self.annotation.Retry;
 
 public interface RetryStrategy {
 

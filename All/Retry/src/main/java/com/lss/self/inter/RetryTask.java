@@ -1,4 +1,4 @@
-package com.lss.inter;
+package com.lss.self.inter;
 
 public interface  RetryTask {
 

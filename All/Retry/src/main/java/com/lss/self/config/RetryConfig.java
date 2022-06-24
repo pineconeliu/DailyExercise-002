@@ -1,8 +1,8 @@
-package com.lss.config;
+package com.lss.self.config;
 
-import com.lss.inter.RetryListener;
-import com.lss.inter.impl.DefaultRetryListener;
-import com.lss.inter.impl.FastRetryStrategy;
+import com.lss.self.inter.RetryListener;
+import com.lss.self.inter.impl.DefaultRetryListener;
+import com.lss.self.inter.impl.FastRetryStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

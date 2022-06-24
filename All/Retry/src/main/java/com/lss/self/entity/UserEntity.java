@@ -1,4 +1,4 @@
-package com.lss.pojo.entity;
+package com.lss.self.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;

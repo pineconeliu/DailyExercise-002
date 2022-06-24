@@ -1,4 +1,4 @@
-package com.lss.inter;
+package com.lss.self.inter;
 
 //重试监听器
 public interface  RetryListener {

@@ -1,6 +1,6 @@
-package com.lss.inter.impl;
+package com.lss.self.inter.impl;
 
-import com.lss.inter.RetryListener;
+import com.lss.self.inter.RetryListener;
 
 public class DefaultRetryListener implements RetryListener {
     @Override

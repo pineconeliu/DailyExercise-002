@@ -1,8 +1,8 @@
-package com.lss.mapper.master;
+package com.lss.self.master;
 
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lss.pojo.entity.UserEntity;
+import com.lss.self.entity.UserEntity;
 
 /**
  * user 表数据库访问层

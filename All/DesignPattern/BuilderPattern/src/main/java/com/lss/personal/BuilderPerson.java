@@ -1,6 +1,6 @@
 package com.lss.personal;
 
-import com.lss.inter.EquipmentBar;
+import com.lss.self.inter.EquipmentBar;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

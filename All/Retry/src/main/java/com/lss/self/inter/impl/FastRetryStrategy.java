@@ -1,9 +1,9 @@
-package com.lss.inter.impl;
+package com.lss.self.inter.impl;
 
-import com.lss.annotation.Retry;
-import com.lss.inter.RetryListener;
-import com.lss.inter.RetryStrategy;
-import com.lss.inter.RetryTask;
+import com.lss.self.annotation.Retry;
+import com.lss.self.inter.RetryListener;
+import com.lss.self.inter.RetryStrategy;
+import com.lss.self.inter.RetryTask;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

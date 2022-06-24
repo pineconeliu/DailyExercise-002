@@ -1,9 +1,9 @@
-package com.lss.annotation;
+package com.lss.self.annotation;
 
-import com.lss.inter.AbstractRetryLitener;
-import com.lss.inter.RetryListener;
-import com.lss.inter.RetryStrategy;
-import com.lss.inter.impl.FastRetryStrategy;
+import com.lss.self.inter.AbstractRetryLitener;
+import com.lss.self.inter.RetryListener;
+import com.lss.self.inter.RetryStrategy;
+import com.lss.self.inter.impl.FastRetryStrategy;
 
 import java.lang.annotation.*;
 
