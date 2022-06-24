@@ -16,6 +16,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+
 @Aspect
 @Component
 public class RetryAop {
@@ -34,6 +36,7 @@ public class RetryAop {
             //执行有注解的方法
             return proceedingJoinPoint.proceed();
         } catch (Throwable throwable) {
+          TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             //发现失败后进入重试该方法
             retryStrategy.retryTask();
         }

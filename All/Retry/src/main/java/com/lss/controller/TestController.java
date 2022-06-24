@@ -3,6 +3,10 @@ package com.lss.controller;
 import com.lss.annotation.Retry;
 import com.lss.inter.impl.DefaultRetryListener;
 import com.lss.inter.impl.FastRetryStrategy;
+import com.lss.mapper.master.UserMapper;
+import com.lss.pojo.entity.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,13 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
- 
+
+    @Autowired
+    private UserMapper userMapper;
+
     public static int count = 0;
      
     @Retry(maxAttempts = 5, delay = 100, value = {ArithmeticException.class}, strategy = FastRetryStrategy.class, listener = DefaultRetryListener.class)
     @GetMapping(value = "/do-test")
     @ResponseBody
+    @Transactional
     public String doTest(@RequestParam  int code) {
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUserid("2131");
+        userEntity.setUsername("测试");
+        userMapper.insert(userEntity);
+
         //count值一直再新增
         count++;
         System.out.println("code is :" + code + " result is :" + count % 3 + " count is :" + count);
@@ -27,6 +41,7 @@ public class TestController {
                 System.out.println(4 / 0);
             }
         }
+
         return "success";
     }
 }

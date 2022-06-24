@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lss.mapper.master.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.lss.pojo.entity.UserEntity">
+    <!--@mbg.generated-->
+    <!--@Table user -->
+        <id column="id" property="id"  jdbcType="BIGINT"/>
+        <result column="userId" property="userid"  jdbcType="VARCHAR"/>
+    <result column="userHead" property="userhead"  jdbcType="VARCHAR"/>
+    <result column="createTime" property="createtime"  jdbcType="TIMESTAMP"/>
+    <result column="updateTime" property="updatetime"  jdbcType="TIMESTAMP"/>
+    <result column="userName" property="username"  jdbcType="VARCHAR"/>
+        
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+        id, userId, userHead, createTime, updateTime, userName
+    </sql>
+    
+    <sql id="where_time">
+        <if test="query.createtimeStart != null">
+            AND #{query.createtimeStart} &lt;= user.createTime
+        </if>
+        <if test="query.createtimeStartEnd != null">
+            AND user.createTime &lt;= #{query.createtimeStartEnd}
+        </if>
+    
+        <if test="query.updatetimeStart != null">
+            AND #{query.updatetimeStart} &lt;= user.updateTime
+        </if>
+        <if test="query.updatetimeStartEnd != null">
+            AND user.updateTime &lt;= #{query.updatetimeStartEnd}
+        </if>
+    </sql>
+</mapper>

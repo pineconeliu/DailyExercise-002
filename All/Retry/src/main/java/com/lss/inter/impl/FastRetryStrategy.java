@@ -7,6 +7,7 @@ import com.lss.inter.RetryTask;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.concurrent.ExecutorService;
 
@@ -71,12 +72,13 @@ public class FastRetryStrategy implements RetryStrategy, ApplicationContextAware
                 for(int i=0;i <= retry.maxAttempts();i++){
                     int finalI = i;
                     try{
-                        //开始重试任务--不知道设计到事务的时候会不会出现问题
+                        //开始重试任务--不知道涉及到事务的时候会不会出现问题，因为异常都已被catch到了，所以事务是无法回滚的，尝试手动回滚
                         retryTask.doTask();
                         //成功就设置true
                         retryTask.setRetrySuccess();
                         return;
                     }catch (Throwable e){
+                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                         for(Class<? extends  Throwable> clazz :exceptionClasses){
                             if(e.getClass().equals(clazz) || e.getClass().isInstance(clazz) ){
                                 if(finalRetryListener !=null){
