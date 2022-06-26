@@ -20,16 +20,17 @@ public class TestController {
 
     public static int count = 0;
      
-    @Retry(maxAttempts = 5, delay = 100, value = {ArithmeticException.class}, strategy = FastRetryStrategy.class, listener = DefaultRetryListener.class)
+    @Retry(maxAttempts = 5, delay = 100, value = {ArithmeticException.class}, strategy = FastRetryStrategy.class,
+            listener = DefaultRetryListener.class,retryIfResult = "success")
     @GetMapping(value = "/do-test")
     @ResponseBody
-    @Transactional
+/*    @Transactional*/
     public String doTest(@RequestParam  int code) {
 
-        UserEntity userEntity = new UserEntity();
+       /* UserEntity userEntity = new UserEntity();
         userEntity.setUserid("2131");
         userEntity.setUsername("测试");
-        userMapper.insert(userEntity);
+        userMapper.insert(userEntity);*/
 
         //count值一直再新增
         count++;

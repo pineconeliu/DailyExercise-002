@@ -18,12 +18,15 @@ public @interface Retry {
     int maxAttempts() default 3;
 
     int delay() default 3000;
-
+    //是不是可以写个策略判断是那种异常，或者说默认是什么异常呢？
     Class<? extends Throwable>[] value() default {};
 
     Class<? extends RetryListener> listener() default AbstractRetryLitener.class;
 
     Class<? extends RetryStrategy>  strategy() default FastRetryStrategy.class;
+
+    //程序的执行结果，如果等于指定的某某
+    String retryIfResult() default "";
 
 
 

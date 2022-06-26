@@ -64,12 +64,12 @@ public class FastRetryStrategy implements RetryStrategy, ApplicationContextAware
         }
         //这个异常是要和什么去对比的吗？如果直接抛出异常，不应该先检查当前抛出的异常是否指定的一样吗？
         Class<? extends Throwable>[] exceptionClasses = retry.value();
-
+        final int attempts = retry.maxAttempts();
         RetryListener finalRetryListener = retryListener;
         retryThreadPool.submit(new Runnable() {
             @Override
             public void run() {
-                for(int i=0;i <= retry.maxAttempts();i++){
+                for(int i = 0; i <= attempts; i++){
                     int finalI = i;
                     try{
                         //开始重试任务--不知道涉及到事务的时候会不会出现问题，因为异常都已被catch到了，所以事务是无法回滚的，尝试手动回滚
@@ -78,8 +78,10 @@ public class FastRetryStrategy implements RetryStrategy, ApplicationContextAware
                         retryTask.setRetrySuccess();
                         return;
                     }catch (Throwable e){
-                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                        //有异常的时候就报错并回滚
+                      /*  TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();*/
                         for(Class<? extends  Throwable> clazz :exceptionClasses){
+                            //要么是指定的异常，要么是这个异常的子类
                             if(e.getClass().equals(clazz) || e.getClass().isInstance(clazz) ){
                                 if(finalRetryListener !=null){
                                     //监听执行结果，将重试结果记录下来，没成功的话，让程序继续for循环执行
