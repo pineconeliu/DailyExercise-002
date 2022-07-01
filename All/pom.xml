@@ -16,27 +16,29 @@
         <module>CompletableFuture</module>
         <module>DesignPattern</module>
         <module>Retry</module>
+        <module>demo</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <hutool-all>5.4.4</hutool-all>
+        <guava-retrying>2.0.0</guava-retrying>
     </properties>
+    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.4.4</version>
+            <version>${hutool-all}</version>
         </dependency>
 
 
         <dependency>
             <groupId>com.github.rholder</groupId>
             <artifactId>guava-retrying</artifactId>
-            <version>2.0.0</version>
+            <version>${guava-retrying}</version>
         </dependency>
 
 
     </dependencies>
-
+    </dependencyManagement>
 </project>
