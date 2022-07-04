@@ -1,6 +1,7 @@
 package com.lss.lock.model;
 
 import cn.hutool.core.thread.ThreadFactoryBuilder;
+import com.lss.factory.MyThreadFactory;
 import com.lss.model.Container;
 
 import java.util.Objects;
@@ -24,7 +25,7 @@ public class Test {
         ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(2);
 
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(3, 5, 20,
-                TimeUnit.MILLISECONDS, arrayBlockingQueue,new ThreadFactoryBuilder().setNamePrefix("测试-thread-").build()
+                TimeUnit.MILLISECONDS, arrayBlockingQueue,new MyThreadFactory("LSS-")
             , new ThreadPoolExecutor.DiscardPolicy());
 
         threadPoolExecutor.execute(new Producer(container));
