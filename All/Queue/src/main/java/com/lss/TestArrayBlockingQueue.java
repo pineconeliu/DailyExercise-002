@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class TestArrayBlockingQueue {
 
-    final  static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(2);
+    final  static BlockingQueue<String> blockingQueue = new ArrayBlockingQueue(2);
 
     @SuppressWarnings(value = "unchecked")
     //异常组-操作有 add(),remove(),element()

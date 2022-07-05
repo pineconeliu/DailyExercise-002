@@ -22,6 +22,8 @@
     <properties>
         <hutool-all>5.4.4</hutool-all>
         <guava-retrying>2.0.0</guava-retrying>
+        <org-slf4j>1.7.25</org-slf4j>
+        <lombok>1.18.16</lombok>
     </properties>
     <dependencyManagement>
     <dependencies>
@@ -39,6 +41,18 @@
         </dependency>
 
 
+        <!--日志封装-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org-slf4j}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok}</version>
+        </dependency>
     </dependencies>
     </dependencyManagement>
 </project>
