@@ -16,7 +16,7 @@
         <module>CompletableFuture</module>
         <module>DesignPattern</module>
         <module>Retry</module>
-        <module>demo</module>
+        <module>SpringEl</module>
     </modules>
 
     <properties>

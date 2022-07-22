@@ -26,6 +26,7 @@
         <module>CompositePattern</module>
         <module>SingletonPattern</module>
         <module>BridgeMode</module>
+        <module>FlyweightPattern</module>
     </modules>
 
 
